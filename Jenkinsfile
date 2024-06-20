@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Create Secret') {
             steps {
-                sh "sed -e 's,{{SECRET_KEY}}, '${CSRF_TOKEN}'.g;' credentials.yaml | kubectl apply -f -"
+                sh "sed -e 's,{{SECRET_KEY}},'${CSRF_TOKEN}',g;' credentials.yaml | kubectl apply -f -"
 
             }
         }
